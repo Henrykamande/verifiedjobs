@@ -41,7 +41,7 @@ SECRET_KEY = get_secret('SECRET_KEY'),
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['verifiedjobsabroad.co.ke','127.0.0.1', '134.209.119.25']
+ALLOWED_HOSTS = ['verifiedjobsabroad.co.ke','127.0.0.1','134.209.119.25']
 
 
 # Application definition
@@ -194,9 +194,10 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
-STATIC_ROOT= os.path.join(BASE_DIR, 'static')
-
+STATICFILES_DIRS =[
+    os.path.join(BASE_DIR, 'static')
+]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 MEDIA_URL='/media/agency_uploads/'
 
 MEDIA_ROOT= os.path.join(BASE_DIR, 'static/images')
