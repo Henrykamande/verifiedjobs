@@ -1,0 +1,53 @@
+{% extends 'main.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+  <main class="inbox my-xl">
+    <div class="content-box">
+      <h3 class="inbox__title">Approved Agencies (<span>{{total_approved_agencies}}</span>)</h3>
+      <ul class="messages">
+      {% for approved_agency in approved_agencies %}
+    	 <a href="{% url 'view_agency_application' approved_agency.id %}">
+		<li class="message message--unread">
+            <span class="message__author">{{approved_agency.name}}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div> 
+
+
+	<div class="content-box">
+      <h3 class="inbox__title">Agencies Pending Approval (<span>{{total_pending_approval}}</span>)</h3>
+      <ul class="messages">
+      {% for agency_ped_approval in agency_pending_approval %}
+        <a href="{% url 'view_agency_application' agency_ped_approval.id %}">
+
+        <li class="message message--unread">
+            <span class="message__author">{{agency_ped_approval.name}}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div> 
+
+	<div class="content-box">
+      <h3 class="inbox__title">Agencies Suspended (<span>{{total_suspended_agencies}}</span>)</h3>
+      <ul class="messages">
+
+      {% for suspended_agency in suspended_agencies %}
+        <a href="{% url 'view_agency_application' suspended_agency.id %}">
+
+        <li class="message message--unread">
+            <span class="message__author">{{suspended_agency.name}}</span>
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div> 
+  </main>
+
+{% endblock content %}

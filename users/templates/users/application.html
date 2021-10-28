@@ -1,0 +1,24 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<!-- Main Section -->
+  <main class="messagePage my-xl">
+    <div class="content-box">
+      <div class="message">
+        <a class="backButton" href="{% url 'applications' %}"><i class="im im-angle-left"></i></a>
+        <h2 class="message__subject">{{messageRequest.job_title}}</h4>
+          <a href="" class="message__author">{{messageRequest.name}}</a>
+          <p class="message__date">{{messageRequest.created}}</p>
+          
+           Sender Email: <span class="message__author">{{messageRequest.email}}</sapn><br>
+           Sender Phone: <span class="message__author">{{messageRequest.phone}}</sapn><br>
+           Valid Passport: <span class="message__author">{{messageRequest.valid_passport}}</sapn><br>
+           Valid Good Conduct: <span class="message__author">{{messageRequest.valid_good_conduct}}</sapn><br>
+           Age: <span class="message__author">{{messageRequest.age}}</sapn><br>
+           Education Level: <span class="message__author">{{messageRequest.education_level}}</sapn><br>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

@@ -1,0 +1,116 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+
+ <!-- Main Section -->
+  <main class="singleProject my-md">
+    <div class="container">
+      <div class="layout">
+       
+        <div class="column column--3">￼
+
+          <img class="singleProject__preview" src="{{project.featured_image.url}}" alt="portfolio thumbnail" />
+          
+        </div>
+        <div>
+        <a href="{% url 'user_profile' project.owner.id %}" class="singleProject__developer"> Job By : {{project.owner.name}}</a>
+
+        <h2 class="singleProject__title">{{project.title}}</h2>
+
+        {% if project.description %}
+          <h3 class="singleProject__subtitle">About the Job</h3>
+          <div class="singleProject__info">
+           {{project.description}}
+          </div>
+          {% endif %}
+          {% if project.requirements %}
+          <h3 class="singleProject__subtitle">Job Requirements</h3>
+          <div class="singleProject__info">
+           {{project.requirements}}
+          </div>
+         {% endif %}
+         <div class="project__tags">
+                    <span class="tag tag--pill tag--main">
+                      <small> Salary: {{project.salary}}</small>
+                    </span>
+                     <span class="tag tag--pill tag--main">
+                      <small> Commission: {{project.commision}}</small>
+                    </span>
+                    <span class="tag tag--pill tag--main">
+                      <small> Country: {{project.country}}</small>
+                    </span>
+                    <span class="tag tag--pill tag--main">
+                      <small> Number of Vacancies: {{project.number_of_post}}</small>
+                    </span><br>
+                  </div>
+                  <div class="grid grid--three">
+                  <div style="padding:10px">
+                   <a href="{% url 'application' project.owner.id %}" class="btn btn--sub btn--lg">Apply </a><br>
+                  </div>
+                  <div><span></span></div> 
+                  <div style="padding:10px">
+                  <a href="{% url 'create_message' project.owner.id %}" class="btn btn--sub btn--lg"> Enquire</a>
+
+                  </div>
+                  </div>
+
+        </div>
+      </div>
+    </div>
+    <section class="projectsList">
+      <div class="container">
+        <div class="grid grid--three">
+
+        {% for project in owner_projects %}
+
+          <div class="column">
+            <div class="card project">
+              <a href="{% url 'project' project.id %}" class="project">
+                <img class="project__thumbnail" src="{{project.imageURL}}" alt="project thumbnail" />
+                <div class="card__body">
+                  <h3 class="project__title">{{project.title}}</h3>
+                  <p><a class="project__author" href="{% url 'user_profile' project.owner.id %}">{{project.owner.name}}</a></p>
+                 
+                  <div class="project__tags">
+                    <span class="tag tag--pill tag--main">
+                      <small> Salary: {{project.salary}}</small>
+                    </span>
+                     <span class="tag tag--pill tag--main">
+                      <small> Commission: {{project.commision}}</small>
+                    </span>
+                    <span class="tag tag--pill tag--main">
+                      {% for tag in project.countries.all%}
+                    <span class="tag tag--pill tag--main">
+                      <small>{{tag}}</small>
+                    </span>
+                    {% endfor %}
+                    </span>
+                    <span class="tag tag--pill tag--main">
+                      <small> Number of Vacancies: {{project.number_of_post}}</small>
+                    </span>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {% endfor %}
+
+         
+
+         
+         
+
+          
+          </div>
+
+        </div>
+      </div>
+    </section>
+    </div>
+  </main>
+</body>
+
+{% endblock content %}

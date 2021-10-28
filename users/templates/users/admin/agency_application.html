@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+<!-- Main Section -->
+  <main class="messagePage my-xl">
+    <div class="content-box">
+      <div class="message">
+        <a class="backButton" href="{% url 'admin_dashboard' %}"><i class="im im-angle-left"></i></a>
+        <h2 class="message__subject">{{agency_application.name}}</h4>
+          <p class="message__date">{{agency_application.created}}</p>
+          <div class="message__body">
+          <div>
+         <span> View : <a href="{{agency_application.companyRegistartionCert}}">Company Registration Certificate</a></span><br>
+            </div>
+            <div>
+         <span> View : <a href="{{agency_application.chamberCommerce}}">Chamber of Commerce Certificate</a></span><br>
+         </div>
+         <div>
+         <span> View : <a href="{{agency_application.neaCert}}">National Employment Authority Certificate</a></span>
+            </div>
+            <div>
+         <span> View : <a href="{{agency_application.cr12}}">Company CR12</a></span>
+            </div> 
+           
+          </div>
+          <div>
+          {{agency_application.about_agency}}
+
+          </div> 
+        {% if agency_application.phone %}
+          <div>
+          Phone Number :<span  class="message__author">{{agency_application.phone}}</span>
+         </div>
+         {% endif %}
+         {% if agency_application.physical_address %}
+        <div>
+          Physical Location :<span  class="message__author">{{agency_application.physical_address}}</span>
+         </div>
+         {% endif %}
+         
+         {% if agency_application.social_website %}
+         <div>
+           Website:<span> <a href="{{agency_application.social_website}}" class="message__author">{{agency_application.name}}</a></span>
+         </div>
+         {% endif %}
+
+          {% if agency_application.is_approved == False %}
+            <a class="button" href="{% url 'approve_agency' agency_application.id %} ">Approve</a>
+            {% endif %}<br>
+
+
+             {% if agency_application.is_approved == True and agency_application.is_suspended == False%}
+            <a class="button" href="{% url 'suspend_agency' agency_application.id %} ">Suspend</a>
+            {% endif %}<br>
+
+            {% if agency_application.is_suspended == True %}
+            <a class="button" href="{% url 'reapprove_agency' agency_application.id %} "> Re-Approve </a>
+            {% endif %} <br>
+      </div>
+    </div>
+  </main>
+
+{% endblock content %}

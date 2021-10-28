@@ -1,0 +1,66 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+
+
+
+<main class="formPage my-xl">
+        <div class="content-box">
+            <div class="formWrapper">
+                <a class="backButton" href="#"><i class="im im-angle-left"></i></a>
+                <br>
+
+                <form class="form" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                    <!-- Input:Text -->
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.title.label}}: </label>
+                        {{form.title}}
+                    </div>
+                     <div class="form__field">
+                        <label for="formInput#text">{{form.featured_image.label}}: </label>
+                        {{form.featured_image}}
+                    </div>
+
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.salary.label}}: </label>
+                        {{form.salary}}
+                    </div>
+
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.description.label}}: </label>
+                        {{form.description}}
+                    </div>
+
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.requirements.label}}: </label>
+                        {{form.requirements}}
+                    </div>
+
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.contract.label}} Period: </label>
+                        {{form.contract}}
+                    </div>
+                    <div class="form__field">
+                        <label for="formInput#text">Number of Vacancies: </label>
+                        {{form.number_of_post}}
+                    </div>
+                    <div class="form__field">
+                        <label for="formInput#text">{{form.commision.label}} Applicable (If none put 0): </label>
+                        {{form.commision}}
+                    </div>
+                    
+                     <div class="form__field">
+
+                        <label for="newTags">Country: </label>
+                        <textarea class="input" type="textarea" name="newTags" placeholder="Add Programing Languages Used"> </textarea>
+
+                    </div>
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                </form>
+            </div>
+        </div>
+    </main>
+{% endblock content%}
