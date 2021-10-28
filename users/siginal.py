@@ -10,7 +10,7 @@ from django.contrib.auth.models import Group
 def createProfile(sender,instance,created,**kwargs):
     if created:
         user= instance
-        group= Group.objects.get(name='agency')
+        group= Group.objects.get_or_create(name='agency')
         user.groups.add(group)
         profile= Profile.objects.create(
                 user=user,
