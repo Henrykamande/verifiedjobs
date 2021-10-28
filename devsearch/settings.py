@@ -41,7 +41,7 @@ SECRET_KEY = get_secret('SECRET_KEY'),
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['verifiedjobsabroad.co.ke','127.0.0.1']
+ALLOWED_HOSTS = ['verifiedjobsabroad.co.ke','127.0.0.1', '134.209.119.25']
 
 
 # Application definition
